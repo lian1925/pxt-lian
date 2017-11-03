@@ -1,8 +1,8 @@
 {
   "id": "microbit",
   "nickname": "microbit",
-  "name": "makecode.microbit.org",
-  "title": "Microsoft MakeCode for micro:bit",
+  "name": "场景化",
+  "title": "场景化编程",
   "description": "A Blocks / JavaScript code editor for the micro:bit powered by Microsoft MakeCode.",
   "corepkg": "core",
   "cloud": {

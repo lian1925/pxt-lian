@@ -3156,8 +3156,8 @@
     }
   ],
   "id": "microbit",
-  "title": "Microsoft MakeCode for micro:bit",
-  "name": "makecode.microbit.org",
+  "title": "场景化编程",
+  "name": "场景化",
   "description": "A Blocks / JavaScript code editor for the micro:bit powered by Microsoft MakeCode.",
   "logoCDN": "@cdnUrl@/blob/d955ce94fc3f7d2c6573300c71a56dc1d92c9bf0/static/logo.portrait.white.svg",
   "docsLogoCDN": "@cdnUrl@/blob/3403510141da69da71b1fbb1024619a3ba88ac29/static/logo.square.white.svg",
