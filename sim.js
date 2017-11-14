@@ -619,6 +619,38 @@ var pxsim;
 })(pxsim || (pxsim = {}));
 var pxsim;
 (function (pxsim) {
+    var house;
+    (function (house) {
+        function onPinPressed(pinId, handler) {
+        }
+        house.onPinPressed = onPinPressed;
+        function onButtonPressed(button, handler) {
+            var b = pxsim.board().buttonPairState;
+            if (button == b.props.ID_BUTTON_AB && !b.usesButtonAB) {
+                b.usesButtonAB = true;
+                pxsim.runtime.queueDisplayUpdate();
+            }
+            pxsim.pxtcore.registerWithDal(button, 3 /* MICROBIT_BUTTON_EVT_CLICK */, handler);
+        }
+        house.onButtonPressed = onButtonPressed;
+        function pinIsHigh(pinId) {
+        }
+        house.pinIsHigh = pinIsHigh;
+        function pinIsLow(pinId) {
+        }
+        house.pinIsLow = pinIsLow;
+        function openLight(pinId) { }
+        house.openLight = openLight;
+        function closeLight(pinId) { }
+        house.closeLight = closeLight;
+        function controlServo(pinId, value) { }
+        house.controlServo = controlServo;
+        function contorlMotor(pinId, value) { }
+        house.contorlMotor = contorlMotor;
+    })(house = pxsim.house || (pxsim.house = {}));
+})(pxsim || (pxsim = {}));
+var pxsim;
+(function (pxsim) {
     var input;
     (function (input) {
         function onPinPressed(pinId, handler) {
