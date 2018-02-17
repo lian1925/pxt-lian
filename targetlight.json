@@ -69,13 +69,13 @@
     "jsRefCounting": true
   },
   "runtime": {
-    "mathBlocks": true,
+    "mathBlocks": false,
     "loopsBlocks": true,
     "logicBlocks": true,
-    "variablesBlocks": true,
-    "textBlocks": true,
-    "listsBlocks": true,
-    "functionBlocks": true,
+    "variablesBlocks": false,
+    "textBlocks": false,
+    "listsBlocks": false,
+    "functionBlocks": false,
     "onStartColor": "#0078D7",
     "onStartNamespace": "basic",
     "onStartWeight": 54

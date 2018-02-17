@@ -619,6 +619,82 @@ var pxsim;
 })(pxsim || (pxsim = {}));
 var pxsim;
 (function (pxsim) {
+    var aSensor;
+    (function (aSensor) {
+        function onGesture(gesture, handler) {
+            var b = pxsim.board().accelerometerState;
+            b.accelerometer.activate();
+            if (gesture == 11 && !b.useShake) {
+                b.useShake = true;
+                pxsim.runtime.queueDisplayUpdate();
+            }
+            pxsim.pxtcore.registerWithDal(27 /* MICROBIT_ID_GESTURE */, gesture, handler);
+        }
+        aSensor.onGesture = onGesture;
+        function temperature() { }
+        aSensor.temperature = temperature;
+        function acceleration(dimension) { }
+        aSensor.acceleration = acceleration;
+    })(aSensor = pxsim.aSensor || (pxsim.aSensor = {}));
+})(pxsim || (pxsim = {}));
+var pxsim;
+(function (pxsim) {
+    var aPower;
+    (function (aPower) {
+        function controlServo(pinId, value) { }
+        aPower.controlServo = controlServo;
+    })(aPower = pxsim.aPower || (pxsim.aPower = {}));
+})(pxsim || (pxsim = {}));
+var pxsim;
+(function (pxsim) {
+    var aLight;
+    (function (aLight) {
+        function showNumber(x, interval) {
+            if (interval <= 0)
+                interval = 1;
+            var leds = pxsim.createImageFromString(x.toString());
+            if (x < 0 || x >= 10)
+                pxsim.ImageMethods.scrollImage(leds, 1, interval);
+            else
+                showLeds(leds, interval * 5);
+        }
+        aLight.showNumber = showNumber;
+        function showString(s, interval) {
+            if (interval <= 0)
+                interval = 1;
+            if (s.length == 0) {
+                clearScreen();
+                aLight.pause(interval * 5);
+            }
+            else {
+                if (s.length == 1)
+                    showLeds(pxsim.createImageFromString(s), 0);
+                else
+                    pxsim.ImageMethods.scrollImage(pxsim.createImageFromString(s + " "), 1, interval);
+            }
+        }
+        aLight.showString = showString;
+        function showLeds(leds, delay) {
+            showAnimation(leds, delay);
+        }
+        aLight.showLeds = showLeds;
+        function clearScreen() {
+            pxsim.board().ledMatrixState.image.clear();
+            pxsim.runtime.queueDisplayUpdate();
+        }
+        aLight.clearScreen = clearScreen;
+        function showAnimation(leds, interval) {
+            pxsim.ImageMethods.scrollImage(leds, 5, interval);
+        }
+        aLight.showAnimation = showAnimation;
+        function plotLeds(leds) {
+            pxsim.ImageMethods.plotImage(leds, 0);
+        }
+        aLight.plotLeds = plotLeds;
+    })(aLight = pxsim.aLight || (pxsim.aLight = {}));
+})(pxsim || (pxsim = {}));
+var pxsim;
+(function (pxsim) {
     var house;
     (function (house) {
         function onPinPressed(pinId, handler) {
@@ -1227,6 +1303,21 @@ var pxsim;
 })(pxsim || (pxsim = {}));
 var pxsim;
 (function (pxsim) {
+    var aBasic;
+    (function (aBasic) {
+        aBasic.pause = pxsim.thread.pause;
+        aBasic.forever = pxsim.thread.forever;
+    })(aBasic = pxsim.aBasic || (pxsim.aBasic = {}));
+})(pxsim || (pxsim = {}));
+var pxsim;
+(function (pxsim) {
+    var aLight;
+    (function (aLight) {
+        aLight.pause = pxsim.thread.pause;
+    })(aLight = pxsim.aLight || (pxsim.aLight = {}));
+})(pxsim || (pxsim = {}));
+var pxsim;
+(function (pxsim) {
     var control;
     (function (control) {
         control.inBackground = pxsim.thread.runInBackground;
@@ -1447,21 +1538,19 @@ var pxsim;
         bluetooth.setTransmitPower = setTransmitPower;
     })(bluetooth = pxsim.bluetooth || (pxsim.bluetooth = {}));
 })(pxsim || (pxsim = {}));
-var pxsim;
-(function (pxsim) {
-    function sendBufferAsm(buffer, pin) {
-        var b = pxsim.board();
-        if (b) {
-            var np = b.neopixelState;
-            if (np) {
-                var buf = buffer.data;
-                np.updateBuffer(buf, pin); // TODO this is wrong
-                pxsim.runtime.queueDisplayUpdate();
-            }
-        }
-    }
-    pxsim.sendBufferAsm = sendBufferAsm;
-})(pxsim || (pxsim = {}));
+// namespace pxsim {
+//     export function sendBufferAsm(buffer: RefBuffer, pin: DigitalPin) {
+//         let b = board();
+//         if (b) {
+//             let np = b.neopixelState;
+//             if (np) {
+//                 let buf = buffer.data;
+//                 np.updateBuffer(buf as any, pin); // TODO this is wrong
+//                 runtime.queueDisplayUpdate();
+//             }
+//         }
+//     }
+// }
 var pxsim;
 (function (pxsim) {
     var RadioDatagram = (function () {
