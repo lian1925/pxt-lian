@@ -1538,19 +1538,21 @@ var pxsim;
         bluetooth.setTransmitPower = setTransmitPower;
     })(bluetooth = pxsim.bluetooth || (pxsim.bluetooth = {}));
 })(pxsim || (pxsim = {}));
-// namespace pxsim {
-//     export function sendBufferAsm(buffer: RefBuffer, pin: DigitalPin) {
-//         let b = board();
-//         if (b) {
-//             let np = b.neopixelState;
-//             if (np) {
-//                 let buf = buffer.data;
-//                 np.updateBuffer(buf as any, pin); // TODO this is wrong
-//                 runtime.queueDisplayUpdate();
-//             }
-//         }
-//     }
-// }
+var pxsim;
+(function (pxsim) {
+    function sendBufferAsm(buffer, pin) {
+        var b = pxsim.board();
+        if (b) {
+            var np = b.neopixelState;
+            if (np) {
+                var buf = buffer.data;
+                np.updateBuffer(buf, pin); // TODO this is wrong
+                pxsim.runtime.queueDisplayUpdate();
+            }
+        }
+    }
+    pxsim.sendBufferAsm = sendBufferAsm;
+})(pxsim || (pxsim = {}));
 var pxsim;
 (function (pxsim) {
     var RadioDatagram = (function () {
