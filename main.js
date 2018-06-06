@@ -1503,7 +1503,7 @@ var ProjectView = (function (_super) {
         document.title = this.state.header ? this.state.header.name + " - " + pxt.appTarget.name : pxt.appTarget.name;
         var rootClasses = sui.cx([
             (this.state.hideEditorFloats || this.state.collapseEditorTools) && !inTutorial ? " hideEditorFloats" : '',
-            this.state.collapseEditorTools && !inTutorial ? " collapsedEditorTools" : '',
+            this.state.collapseEditorTools && !inTutorial ? " collapsedEditorTools" : 'collapsedEditorTools',
             this.state.fullscreen ? 'fullscreensim' : '',
             this.state.highContrast ? 'hc' : '',
             showSideDoc ? 'sideDocs' : '',

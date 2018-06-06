@@ -41286,6 +41286,7 @@ html.ios body {
 /*******************************
              Layout
 *******************************/
+
 html,
 body {
   min-width: 320px;
@@ -42859,12 +42860,14 @@ code.lang-filterblocks {
 @media only screen and (max-width: 767px) {
   #filelist {
     background: transparent !important;
+    display: none !important;
   }
 }
 /* Tablet */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   #filelist {
     background: transparent !important;
+    display: none !important;
   }
 }
 /* Small Monitor */

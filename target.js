@@ -75,10 +75,10 @@ var pxtTargetBundle = {
     "jsRefCounting": true
   },
   "runtime": {
-    "mathBlocks": false,
+    "mathBlocks": true,
     "loopsBlocks": false,
     "logicBlocks": true,
-    "variablesBlocks": false,
+    "variablesBlocks": true,
     "textBlocks": false,
     "listsBlocks": false,
     "functionBlocks": false,
